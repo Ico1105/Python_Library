@@ -1,4 +1,7 @@
 import re
+from datetime import datetime
+MIN_YEAR = 1700
+MIN_COPIES = 1
 
 def _clean_isbn(isbn):
     return re.sub(r'[-\s]', '', isbn)
@@ -60,3 +63,57 @@ def validate_isbn(isbn: str) -> bool:
         return validate_isbn13(isbn)
     else:
         return False
+
+def validate_title(title) -> bool:
+    title = title.strip()
+    if len(title) < 3:
+        raise ValueError("Title must be at least 3 characters long")
+
+    return title
+
+def validate_author(author) -> bool:
+    author = author.strip()
+    if len(author) < 3:
+        raise ValueError("Author must be at least 3 characters long")
+
+    return author
+
+def validate_year(year) -> bool:
+    try:
+        year = int(year)
+    except (ValueError, TypeError):
+        return False
+    current_year = datetime.now().year
+    if year < MIN_YEAR or year > current_year:
+        return False
+
+    return True
+
+def validate_total_copies(total_copies) -> bool:
+    if isinstance(total_copies, float) and not total_copies.is_integer():
+        return False
+
+    if isinstance(total_copies, str) and "." in total_copies:
+        return False
+
+    try:
+        total_copies = int(total_copies)
+    except (ValueError, TypeError):
+        return False
+    if total_copies < MIN_COPIES:
+        return False
+
+    return True
+
+
+
+
+
+
+
+
+
+
+
+
+
