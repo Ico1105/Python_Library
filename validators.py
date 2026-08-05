@@ -2,6 +2,7 @@ import re
 from datetime import datetime
 MIN_YEAR = 1700
 MIN_COPIES = 1
+MIN_MEMBER_ID = 0
 
 def _clean_isbn(isbn):
     return re.sub(r'[-\s]', '', isbn)
@@ -105,6 +106,30 @@ def validate_total_copies(total_copies) -> bool:
 
     return True
 
+def validate_member_id(member_id) -> bool:
+
+    if isinstance(member_id, float) and not member_id.is_integer():
+        return False
+
+    if isinstance(member_id, str) and "." in member_id:
+        return False
+
+    try:
+        member_id = int(member_id)
+
+    except (ValueError, TypeError):
+        return False
+
+    if member_id < MIN_MEMBER_ID:
+        return False
+    return True
+
+def validate_name(first_name: str) -> bool:
+    first_name = first_name.strip()
+
+    if len(first_name) < 3:
+        raise ValueError("Name must be at least 3 characters long")
+    return True
 
 
 
