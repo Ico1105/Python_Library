@@ -1,4 +1,4 @@
-from validators import validate_isbn, _clean_isbn, validate_author, validate_year, validate_total_copies
+from validators import validate_isbn, _clean_isbn, validate_author, validate_year, validate_total_copies, validate_title
 
 
 class Book:
@@ -28,7 +28,7 @@ class Book:
 
     @title.setter
     def title(self, value):
-        self._title = value.title(value)
+        self._title = validate_title(value)
 
     @property
     def author(self):
@@ -52,10 +52,8 @@ class Book:
 
     @total_copies.setter
     def total_copies(self, value):
-        if validate_total_copies(value):
-            self._total_copies = int(value)
-        else:
-            raise ValueError(f"Invalid total copies: {value}")
+            self._total_copies = validate_total_copies(value)
+
 
 
 

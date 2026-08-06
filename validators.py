@@ -79,32 +79,34 @@ def validate_author(author) -> bool:
 
     return author
 
-def validate_year(year) -> bool:
+def validate_year(year) -> int:
     try:
         year = int(year)
     except (ValueError, TypeError):
-        return False
+        raise ValueError("Year must be an integer")
+
     current_year = datetime.now().year
+
     if year < MIN_YEAR or year > current_year:
-        return False
+        raise ValueError("Invalid year.")
 
-    return True
+    return year
 
-def validate_total_copies(total_copies) -> bool:
-    if isinstance(total_copies, float) and not total_copies.is_integer():
-        return False
-
-    if isinstance(total_copies, str) and "." in total_copies:
-        return False
+def validate_total_copies(value) -> int:
+    # if isinstance(total_copies, float) and not total_copies.is_integer():
+    #     return False
+    #
+    # if isinstance(total_copies, str) and "." in total_copies:
+    #     return False
 
     try:
-        total_copies = int(total_copies)
-    except (ValueError, TypeError):
-        return False
-    if total_copies < MIN_COPIES:
-        return False
+        value = int(value)
+    except:
+        raise ValueError(f"Invalid total copies: {value}")
+    if value < MIN_COPIES:
+        raise ValueError("Total copies must be at least 1.")
 
-    return True
+    return value
 
 def validate_member_id(member_id) -> bool:
 
@@ -124,11 +126,35 @@ def validate_member_id(member_id) -> bool:
         return False
     return True
 
-def validate_name(first_name: str) -> bool:
+def validate_first_name(first_name) -> bool:
     first_name = first_name.strip()
 
     if len(first_name) < 3:
         raise ValueError("Name must be at least 3 characters long")
+    return first_name
+
+def validate_last_name(last_name) -> bool:
+    last_name = last_name.strip()
+
+    if len(last_name) < 3:
+        raise ValueError("Name must be at least 3 characters long")
+    return last_name
+
+def validate_email(email) -> bool:
+    email = email.strip()
+    if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
+        raise ValueError("Invalid email format")
+    return email
+
+def validate_phone(phone: str):
+    phone = phone.strip()
+    if not re.match(r"^\d{10}$", phone):
+        raise ValueError("Invalid phone number format")
+
+def validate_address(address: str) -> bool:
+    address = address.strip()
+    if len(address) < 5:
+        raise ValueError("Address must be at least 5 characters long")
     return True
 
 
