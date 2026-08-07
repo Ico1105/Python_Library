@@ -54,6 +54,25 @@ class Book:
     def total_copies(self, value):
             self._total_copies = validate_total_copies(value)
 
+    def to_dict(self):
+        return {
+            "isbn": self.isbn,
+            "title": self.title,
+            "author": self.author,
+            "year": self.year,
+            "total_copies": self.total_copies,
+        }
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(
+            isbn=data["isbn"],
+            title=data["title"],
+            author=data["author"],
+            year=data["year"],
+            total_copies=data["total_copies"],
+        )
+
 
 
 

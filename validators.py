@@ -150,12 +150,14 @@ def validate_phone(phone: str):
     phone = phone.strip()
     if not re.match(r"^\d{10}$", phone):
         raise ValueError("Invalid phone number format")
+    return phone
 
-def validate_address(address: str) -> bool:
+def validate_address(address: str):
     address = address.strip()
     if len(address) < 5:
         raise ValueError("Address must be at least 5 characters long")
-    return True
+
+    return address
 
 
 
