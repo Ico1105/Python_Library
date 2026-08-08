@@ -1,6 +1,5 @@
 from validators import validate_isbn, _clean_isbn, validate_author, validate_year, validate_total_copies, validate_title
 
-
 class Book:
     def __init__(self, isbn, title, author, year, total_copies):
         self.isbn = isbn
