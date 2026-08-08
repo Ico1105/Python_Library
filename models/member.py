@@ -17,10 +17,7 @@ class Member:
 
     @member_id.setter
     def member_id(self, value):
-        if validate_member_id(value):
-            self._member_id = int(value)
-        else:
-            raise ValueError(f"Invalid member ID: {value}")
+        self._member_id = validate_member_id(value)
 
     @property
     def first_name(self):

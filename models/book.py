@@ -15,12 +15,7 @@ class Book:
 
     @isbn.setter
     def isbn(self, value):
-        cleaned = _clean_isbn(value)
-
-        if not validate_isbn(cleaned):
-            raise ValueError("Invalid ISBN")
-
-        self._isbn = cleaned
+        self._isbn = validate_isbn(value)
 
     @property
     def title(self):

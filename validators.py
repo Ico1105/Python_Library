@@ -51,7 +51,7 @@ def validate_isbn13(isbn: str) -> bool:
     return total % 10 == 0
 
 
-def validate_isbn(isbn: str) -> bool:
+def validate_isbn(isbn):
     """
     Automatically detects whether the input is ISBN-10 or ISBN-13
     and validates it according to the corresponding rule.
@@ -59,11 +59,15 @@ def validate_isbn(isbn: str) -> bool:
     cleaned = _clean_isbn(isbn)
 
     if len(cleaned) == 10:
-        return validate_isbn10(isbn)
+        if not validate_isbn10(cleaned):
+            raise ValueError("Invalid ISBN-10")
     elif len(cleaned) == 13:
-        return validate_isbn13(isbn)
+        if not validate_isbn13(cleaned):
+            raise ValueError("Invalid ISBN-13")
     else:
-        return False
+        raise ValueError("ISBN must contain 10 of 13 characters")
+
+    return cleaned.upper()
 
 def validate_title(title) -> bool:
     title = title.strip()
@@ -101,30 +105,18 @@ def validate_total_copies(value) -> int:
 
     try:
         value = int(value)
-    except:
-        raise ValueError(f"Invalid total copies: {value}")
-    if value < MIN_COPIES:
-        raise ValueError("Total copies must be at least 1.")
+    except (ValueError, TypeError):
+        raise ValueError(f"Total copies must be an integer {value}")
 
-    return value
-
-def validate_member_id(member_id) -> bool:
-
-    if isinstance(member_id, float) and not member_id.is_integer():
-        return False
-
-    if isinstance(member_id, str) and "." in member_id:
-        return False
-
+def validate_member_id(member_id) -> int:
     try:
         member_id = int(member_id)
-
-    except (ValueError, TypeError):
-        return False
-
+    except:
+        raise (ValueError(f"Invalid member ID: {member_id}"))
     if member_id < MIN_MEMBER_ID:
-        return False
-    return True
+        raise ValueError("Member ID must be greater than or equal to 0.")
+    return member_id
+
 
 def validate_first_name(first_name) -> bool:
     first_name = first_name.strip()
