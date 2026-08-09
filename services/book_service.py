@@ -1,14 +1,12 @@
 from json_storage import load_json, save_json
 from models.book import Book
 from user_input import (
+    get_isbn,
     get_title,
     get_author,
     get_year,
     get_total_copies,
 )
-
-def get_isbn():
-    return input("Enter the ISBN: ")
 
 def add_book():
     isbn = get_isbn()

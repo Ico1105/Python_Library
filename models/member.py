@@ -57,3 +57,25 @@ class Member:
     @address.setter
     def address(self, value):
         self._address = validate_address(value)
+
+    def to_dict(self):
+        return {
+            "member_id": self.member_id,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "email": self.email,
+            "phone": self.phone,
+            "address": self.address,
+        }
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(
+            member_id=data["member_id"],
+            first_name=data["first_name"],
+            last_name=data["last_name"],
+            email=data["email"],
+            phone=data["phone"],
+            address=data["address"],
+        )
+
