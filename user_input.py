@@ -1,4 +1,14 @@
-from validators import validate_year
+from validators import validate_year, validate_phone, validate_first_name, validate_last_name, validate_email, \
+    validate_address
+
+
+def get_validated_input(prompt, validator):
+    while True:
+        value = input(prompt)
+        try:
+            return validator(value)
+        except ValueError as error:
+            print(error)
 
 def get_isbn():
     return input("Enter the ISBN: ")
@@ -22,16 +32,32 @@ def get_total_copies():
     return input("Enter the total copies: ")
 
 def get_first_name():
-    return input("Enter the first name: ")
+    return get_validated_input(
+        "Enter the first name: ",
+        validate_first_name
+    )
 
 def get_last_name():
-    return input("Enter the last name: ")
+    return get_validated_input(
+        "Enter the last name: ",
+        validate_last_name
+    )
 
 def get_email():
-    return input("Enter the email: ")
+    return get_validated_input(
+        "Enter the email: ",
+        validate_email
+    )
 
 def get_phone():
-    return input("Enter the phone number: ")
+    while True:
+        return get_validated_input(
+            "Enter the phone number: ",
+            validate_phone
+        )
 
 def get_address():
-    return input("Enter the address: ")
+    return get_validated_input(
+        "Enter the address: ",
+        validate_address
+    )

@@ -7,6 +7,9 @@ from user_input import (
     get_phone,
     get_address,
 )
+import os
+print(os.getcwd())
+print(os.listdir())
 
 
 def generate_member_id(members):
@@ -16,7 +19,7 @@ def generate_member_id(members):
     return max(member["member_id"] for member in members) + 1
 
 def add_member():
-    members = load_json("members.json")
+    members = load_json("storage/members.json")
 
     first_name = get_first_name()
     last_name = get_last_name()
@@ -35,4 +38,7 @@ def add_member():
     )
 
     members.append(member.to_dict())
-    save_json("members.json", members)
+    save_json("storage/members.json", members)
+
+if __name__ == "__main__":
+    add_member()
