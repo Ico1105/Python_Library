@@ -21,11 +21,11 @@ def generate_member_id(members):
 def add_member():
     members = load_json("storage/members.json")
 
-    first_name = get_first_name()
-    last_name = get_last_name()
+    first_name = get_first_name().title()
+    last_name = get_last_name().title()
     email = get_email()
     phone = get_phone()
-    address = get_address()
+    address = get_address().title()
     member_id = generate_member_id(members)
 
     member = Member(
