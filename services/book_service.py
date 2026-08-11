@@ -27,3 +27,8 @@ def add_book():
     books.append(book.to_dict())
     save_json("books.json", books)
 
+def edit_book():
+    pass
+
+def delete_book():
+    pass

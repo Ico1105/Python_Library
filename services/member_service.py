@@ -21,11 +21,11 @@ def generate_member_id(members):
 def add_member():
     members = load_json("storage/members.json")
 
-    first_name = get_first_name().title()
-    last_name = get_last_name().title()
+    first_name = get_first_name()
+    last_name = get_last_name()
     email = get_email()
     phone = get_phone()
-    address = get_address().title()
+    address = get_address()
     member_id = generate_member_id(members)
 
     member = Member(
@@ -39,6 +39,12 @@ def add_member():
 
     members.append(member.to_dict())
     save_json("storage/members.json", members)
+
+def edit_member():
+    pass
+
+def delete_member():
+    pass
 
 if __name__ == "__main__":
     add_member()

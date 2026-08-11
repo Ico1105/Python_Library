@@ -74,14 +74,14 @@ def validate_title(title) -> bool:
     if len(title) < 3:
         raise ValueError("Title must be at least 3 characters long")
 
-    return title
+    return title.title()
 
 def validate_author(author) -> bool:
     author = author.strip()
     if len(author) < 3:
         raise ValueError("Author must be at least 3 characters long")
 
-    return author
+    return author.title()
 
 def validate_year(year) -> int:
     try:
@@ -123,14 +123,14 @@ def validate_first_name(first_name) -> bool:
 
     if len(first_name) < 3:
         raise ValueError("Name must be at least 3 characters long")
-    return first_name
+    return first_name.title()
 
 def validate_last_name(last_name) -> bool:
     last_name = last_name.strip()
 
     if len(last_name) < 3:
         raise ValueError("Name must be at least 3 characters long")
-    return last_name
+    return last_name.title()
 
 def validate_email(email) -> bool:
     email = email.strip()
@@ -149,7 +149,7 @@ def validate_address(address: str):
     if len(address) < 5:
         raise ValueError("Address must be at least 5 characters long")
 
-    return address
+    return address.title()
 
 
 
