@@ -7,10 +7,6 @@ from user_input import (
     get_phone,
     get_address,
 )
-import os
-print(os.getcwd())
-print(os.listdir())
-
 
 def generate_member_id(members):
     if not members:
@@ -41,10 +37,29 @@ def add_member():
     save_json("storage/members.json", members)
 
 def edit_member():
-    pass
+    members = load_json("storage/members.json")
+    for member in members:
+        print(f"{member['member_id']}: {member['first_name']} {member['last_name']}")
+    member_id = int(input("Enter the member ID to edit: "))
+    for member in members:
+        if member["member_id"] == member_id:
+            for k, v in member.items():
+                print(f"{k}: {v}")
+            print("===========================")
+
+    print("1. First name")
+    print("2. Last name")
+    print("3. Email")
+    print("4. Phone")
+    print("5. Address")
+
+    choice = input("Enter the field you want to edit: ")
+
+
+
 
 def delete_member():
     pass
 
 if __name__ == "__main__":
-    add_member()
+    edit_member()
