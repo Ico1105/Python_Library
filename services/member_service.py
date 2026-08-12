@@ -43,17 +43,12 @@ def edit_member():
     member_id = int(input("Enter the member ID to edit: "))
     for member in members:
         if member["member_id"] == member_id:
-            for k, v in member.items():
-                print(f"{k}: {v}")
+            fields = {k: v for k, v in member.items() if k != "member_id"}
+            for i, (k, v) in enumerate(fields.items(), start=1):
+                print(f"{i}. {k}: {v}")
+            choice = input("Enter the field you want to edit: ")
             print("===========================")
 
-    print("1. First name")
-    print("2. Last name")
-    print("3. Email")
-    print("4. Phone")
-    print("5. Address")
-
-    choice = input("Enter the field you want to edit: ")
 
 
 
