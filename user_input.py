@@ -26,7 +26,7 @@ def get_title():
 
 def get_author():
     return get_validated_input(
-        "Enter the author",
+        "Enter the author: ",
         validate_author
     )
 

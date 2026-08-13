@@ -9,6 +9,8 @@ from user_input import (
 )
 
 def add_book():
+    books = load_json("storage/books.json")
+
     isbn = get_isbn()
     title = get_title()
     author = get_author()
@@ -23,12 +25,15 @@ def add_book():
                 )
 
 
-    books = load_json("books.json")
     books.append(book.to_dict())
-    save_json("books.json", books)
+    save_json("storage/books.json", books)
 
 def edit_book():
     pass
 
 def delete_book():
     pass
+
+
+if __name__ == "__main__":
+    add_book()

@@ -96,17 +96,12 @@ def validate_year(year) -> int:
 
     return year
 
-def validate_total_copies(value) -> int:
-    # if isinstance(total_copies, float) and not total_copies.is_integer():
-    #     return False
-    #
-    # if isinstance(total_copies, str) and "." in total_copies:
-    #     return False
-
+def validate_total_copies(value):
     try:
         value = int(value)
-    except (ValueError, TypeError):
+    except:
         raise ValueError(f"Total copies must be an integer {value}")
+    return value
 
 def validate_member_id(member_id) -> int:
     try:
