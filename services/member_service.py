@@ -39,21 +39,33 @@ def add_member():
 def edit_member():
     members = load_json("storage/members.json")
     for member in members:
-        print(f"{member['member_id']}: {member['first_name']} {member['last_name']}")
+        print(f"{member['member_id']}. {member['first_name']} {member['last_name']}")
     member_id = int(input("Enter the member ID to edit: "))
     for member in members:
         if member["member_id"] == member_id:
             fields = {k: v for k, v in member.items() if k != "member_id"}
             for i, (k, v) in enumerate(fields.items(), start=1):
                 print(f"{i}. {k}: {v}")
-            choice = input("Enter the field you want to edit: ")
+            choice = int(input("Enter the field you want to edit: "))
+
+            edit_function = {
+                "first_name": get_first_name,
+                "last_name": get_last_name,
+                "email": get_email,
+                "phone": get_phone,
+                "address": get_address,
+            }
+            field = list(fields.keys())[choice - 1]
+            get_value = edit_function[field]
+            new_value = get_value()
+            member[field] = new_value
+            save_json("storage/members.json", members)
+
+
+
             print("===========================")
 
-
-
-
-
-def delete_member():
+def archive_member():
     pass
 
 if __name__ == "__main__":
