@@ -1,12 +1,15 @@
-from validators import validate_isbn, _clean_isbn, validate_author, validate_year, validate_total_copies, validate_title
+from validators import validate_isbn, _clean_isbn, validate_author, validate_year, validate_total_copies, \
+    validate_title, validate_available_copies
+
 
 class Book:
-    def __init__(self, isbn, title, author, year, total_copies):
+    def __init__(self, isbn, title, author, year, total_copies, available_copies):
         self.isbn = isbn
         self.title = title
         self.author = author
         self.year = year
         self.total_copies = total_copies
+        self.available_copies = available_copies
 
     @property
     def isbn(self):
@@ -48,6 +51,17 @@ class Book:
     def total_copies(self, value):
             self._total_copies = validate_total_copies(value)
 
+    @property
+    def available_copies(self):
+        return self._available_copies
+
+    @available_copies.setter
+    def available_copies(self, value):
+        self._available_copies = validate_available_copies(
+            value,
+            self.total_copies
+        )
+
     def to_dict(self):
         return {
             "isbn": self.isbn,
@@ -55,6 +69,7 @@ class Book:
             "author": self.author,
             "year": self.year,
             "total_copies": self.total_copies,
+            "available_copies": self.available_copies,
         }
 
     @classmethod
@@ -65,6 +80,7 @@ class Book:
             author=data["author"],
             year=data["year"],
             total_copies=data["total_copies"],
+            available_copies=data["available_copies"],
         )
 
 

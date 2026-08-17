@@ -103,6 +103,18 @@ def validate_total_copies(value):
         raise ValueError(f"Total copies must be an integer {value}")
     return value
 
+def validate_available_copies(value, total_copies):
+    try:
+        value = int(value)
+    except (ValueError, TypeError):
+        raise ValueError(f"Available copies must be an integer")
+    if value < 0:
+        raise ValueError("Available copies must be an integer.")
+
+    if value > total_copies:
+        raise ValueError("Available copies must be less than or equal to total copies.")
+
+    return value
 def validate_member_id(member_id) -> int:
     try:
         member_id = int(member_id)

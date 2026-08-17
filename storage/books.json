@@ -1,1 +1,72 @@
-[]
+[
+    {
+        "isbn": "9780135957059",
+        "title": "The Pragmatic Programmer",
+        "author": "David Thomas",
+        "year": 2019,
+        "total_copies": 1
+    },
+    {
+        "isbn": "9781492051367",
+        "title": "Fluent Python",
+        "author": "Luciano Ramalho",
+        "year": 2022,
+        "total_copies": 1
+    },
+    {
+        "isbn": "9781617296086",
+        "title": "Python Tricks",
+        "author": "Dan Bader",
+        "year": 2017,
+        "total_copies": 1
+    },
+    {
+        "isbn": "9781593279288",
+        "title": "Python Crash Course",
+        "author": "Eric Matthes",
+        "year": 2019,
+        "total_copies": 1
+    },
+    {
+        "isbn": "9780135404676",
+        "title": "Python Programming",
+        "author": "John Zelle",
+        "year": 2016,
+        "total_copies": 1
+    },
+    {
+        "isbn": "9781098141002",
+        "title": "Python Distilled",
+        "author": "David M. Beazley",
+        "year": 2021,
+        "total_copies": 1
+    },
+    {
+        "isbn": "9781801817684",
+        "title": "Python Clean Code",
+        "author": "Mariano Anaya",
+        "year": 2022,
+        "total_copies": 1
+    },
+    {
+        "isbn": "9781788837484",
+        "title": "Mastering Python",
+        "author": "Rick van Hattem",
+        "year": 2018,
+        "total_copies": 1
+    },
+    {
+        "isbn": "9781491912058",
+        "title": "Flask Web Development",
+        "author": "Miguel Grinberg",
+        "year": 2018,
+        "total_copies": 1
+    },
+    {
+        "isbn": "9781617296959",
+        "title": "Two Scoops of Django",
+        "author": "Daniel Roy Greenfeld",
+        "year": 2019,
+        "total_copies": 1
+    }
+]
