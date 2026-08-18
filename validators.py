@@ -1,8 +1,6 @@
 import re
 from datetime import datetime
-MIN_YEAR = 1700
-MIN_COPIES = 1
-MIN_MEMBER_ID = 0
+from constants import MIN_YEAR, MIN_MEMBER_ID
 
 def _clean_isbn(isbn):
     return re.sub(r'[-\s]', '', isbn)

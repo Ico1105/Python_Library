@@ -2,6 +2,7 @@ from datetime import date, timedelta
 
 from json_storage import load_json, save_json
 from models.rental import Rental
+from constants import RENTAL_PERIOD_DAYS
 
 
 def generate_rental_id(rentals):
@@ -58,7 +59,7 @@ def rent_book():
     # Create rental
     rental_id = generate_rental_id(rentals)
     rental_date = date.today()
-    due_date = rental_date + timedelta(days=14)
+    due_date = rental_date + timedelta(days=RENTAL_PERIOD_DAYS)
     rental = Rental(
         rental_id=rental_id,
         member_id=member_id,
