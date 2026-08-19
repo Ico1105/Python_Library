@@ -1,6 +1,7 @@
 import re
 from datetime import datetime
-from constants import MIN_YEAR, MIN_MEMBER_ID
+from constants import MIN_YEAR, MIN_MEMBER_ID, MIN_COPIES
+
 
 def _clean_isbn(isbn):
     return re.sub(r'[-\s]', '', isbn)
@@ -97,8 +98,11 @@ def validate_year(year) -> int:
 def validate_total_copies(value):
     try:
         value = int(value)
-    except:
+    except (ValueError, TypeError):
         raise ValueError(f"Total copies must be an integer {value}")
+    if value < MIN_COPIES:
+        raise ValueError(f"Total copies must be at least {MIN_COPIES}.")
+
     return value
 
 def validate_available_copies(value, total_copies):

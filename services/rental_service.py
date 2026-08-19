@@ -80,3 +80,6 @@ def return_book():
 
 def show_all_rentals():
     pass
+
+if __name__ == "__main__":
+    rent_book()
