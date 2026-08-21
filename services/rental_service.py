@@ -1,6 +1,7 @@
 from datetime import date, timedelta
 
 from json_storage import load_json, save_json
+from models import rental, book
 from models.rental import Rental
 from constants import RENTAL_PERIOD_DAYS
 
@@ -42,7 +43,7 @@ def rent_book():
             f"(Available: {book['available_copies']})"
         )
     isbn = input("Enter the book ISBN: ")
-    # Fing book
+    # Find book
     book = None
     for item in books:
         if item["isbn"] == isbn:
@@ -76,10 +77,32 @@ def rent_book():
     print("Book rented successfully.")
 
 def return_book():
-    pass
+    rentals = load_json("storage/rentals.json")
+    books = load_json("storage/books.json")
+    for rental in rentals:
+        if  rental['return_date'] is None:
+            print(
+                f"{rental['rental_id']}. "
+                f"Membe: {rental['member_id']}"
+                f"ISBN: {rental['isbn']}"
+            )
+    rental_id = int(input("Enter the rental ID: "))
+
+    for rental in rentals:
+        if rental['rental_id'] == rental_id:
+
+            for book in books:
+                if book['isbn'] == rental['isbn']:
+                    book['available_copies'] += 1
+                    rental['return_date'] = date.today().isoformat()
+
+                    save_json("storage/rentals.json", rentals)
+                    save_json("storage/books.json", books)
+                    print("Book returned successfully.")
+                    return
 
 def show_all_rentals():
     pass
 
 if __name__ == "__main__":
-    rent_book()
+    return_book()
