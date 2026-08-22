@@ -14,5 +14,21 @@
         "rental_date": "2026-08-22",
         "due_date": "2026-09-21",
         "return_date": null
+    },
+    {
+        "rental_id": 8,
+        "member_id": 10,
+        "isbn": "9780135957059",
+        "rental_date": "2026-08-23",
+        "due_date": "2026-09-22",
+        "return_date": null
+    },
+    {
+        "rental_id": 9,
+        "member_id": 5,
+        "isbn": "9780135404676",
+        "rental_date": "2026-08-23",
+        "due_date": "2026-09-22",
+        "return_date": null
     }
 ]

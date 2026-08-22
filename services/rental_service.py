@@ -103,7 +103,26 @@ def return_book():
 
 def show_all_rentals():
     rentals = load_json("storage/rentals.json")
+    for rental in rentals:
+        if rental['return_date'] is None:
+            print(
+                f"Rental ID: {rental['rental_id']}\n"
+                f"Member ID: {rental['member_id']}\n"
+                f"ISBN: {rental['isbn']}\n"
+                f"Due Date: {rental['due_date']}\n"
+                f"Return Date: {rental['return_date']}\n"
+            )
+        print("======================")
+    for rental in rentals:
+        if rental['return_date'] is not None:
+            print(
+                f"Rental ID: {rental['rental_id']}\n"
+                f"Member ID: {rental['member_id']}\n"
+                f"ISBN: {rental['isbn']}\n"
+                f"Due Date: {rental['due_date']}\n"
+                f"Return Date: {rental['return_date']}\n"
+            )
 
 
 if __name__ == "__main__":
-    return_book()
+    show_all_rentals()
