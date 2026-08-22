@@ -38,7 +38,7 @@ def rent_book():
     # Find books
     for book in books:
         print(
-            f"{book['book_id']}."
+            f"{book['isbn']}."
             f"{book['title']} "
             f"(Available: {book['available_copies']})"
         )
@@ -83,7 +83,7 @@ def return_book():
         if  rental['return_date'] is None:
             print(
                 f"{rental['rental_id']}. "
-                f"Membe: {rental['member_id']}"
+                f"Member: {rental['member_id']} "
                 f"ISBN: {rental['isbn']}"
             )
     rental_id = int(input("Enter the rental ID: "))
@@ -102,7 +102,8 @@ def return_book():
                     return
 
 def show_all_rentals():
-    pass
+    rentals = load_json("storage/rentals.json")
+
 
 if __name__ == "__main__":
     return_book()
