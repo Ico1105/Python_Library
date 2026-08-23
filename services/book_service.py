@@ -22,7 +22,7 @@ def add_book():
                 author=author,
                 year=year,
                 total_copies=total_copies,
-                )
+    )
 
 
     books.append(book.to_dict())
@@ -51,6 +51,17 @@ def edit_book():
             book[field] = new_value
             save_json("storage/books.json", books)
             print("=" * 20)
+
+def show_all_books():
+    books = load_json("storage/books.json")
+    for book in books:
+        print(f"ISBN: {book['isbn']}. \n"
+              f"Title: {book['title']} \n"
+              f"Author: {book['author']}\n"
+              f"Year: {book['year']}\n"
+              f"Total Copies: {book['total_copies']}\n"
+              f"Available Copies: {book['available_copies']}\n")
+        print("=" * 20)
 
 def delete_book():
     pass

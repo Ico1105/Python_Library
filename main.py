@@ -1,4 +1,4 @@
-from services.book_service import add_book, edit_book
+from services.book_service import add_book, edit_book, show_all_books
 from services.member_service import add_member, edit_member
 from services.rental_service import rent_book, return_book, show_all_rentals
 
@@ -37,7 +37,7 @@ def books_menu():
         print("3. List book")
         print("0. Back")
 
-        choice = int(input("Enter your choice: "))
+        choice = input("Enter your choice: ")
         print()
 
         if choice == 1:
@@ -45,7 +45,7 @@ def books_menu():
         elif choice == 2:
             edit_book()
         elif choice == 3:
-            pass
+            show_all_books()
         elif choice == 0:
             break
         else:
@@ -58,7 +58,7 @@ def members_menu():
         print("2. Edit member")
         print("3. List member")
         print("0. Back")
-        choice = int(input("Enter your choice: "))
+        choice = input("Enter your choice: ")
         print()
 
         if choice == 1:
@@ -80,7 +80,7 @@ def rentals_menu():
         print("3. List rental")
         print("0. Back")
 
-        choice = int(input("Enter your choice: "))
+        choice = input("Enter your choice: ")
         print()
         if choice == 1:
             rent_book()

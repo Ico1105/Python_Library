@@ -65,8 +65,18 @@ def edit_member():
 
             print("===========================")
 
+def show_all_members():
+    members = load_json("storage/members.json")
+    for member in members:
+        print(f"Member ID: {member['member_id']}. \n"
+              f"Name: {member['first_name']} {member['last_name']}\n"
+              f"Email: {member['email']}\n"
+              f"Phone: {member['phone']}\n"
+              f"Address: {member['address']}\n")
+        print("=" * 20)
+
 def archive_member():
     pass
 
 if __name__ == "__main__":
-    edit_member()
+    show_all_members()
