@@ -1,5 +1,5 @@
 from services.book_service import add_book, edit_book, show_all_books
-from services.member_service import add_member, edit_member
+from services.member_service import add_member, edit_member, show_all_members
 from services.rental_service import rent_book, return_book, show_all_rentals
 
 
@@ -11,19 +11,19 @@ def main():
         print("3. Rentals")
         print("0. Exit")
 
-        choice = int(input("Enter your choice: "))
+        choice = input("Enter your choice: ")
         print()
 
-        if choice == 1:
+        if choice == "1":
             books_menu()
 
-        elif choice == 2:
+        elif choice == "2":
             members_menu()
 
-        elif choice == 3:
+        elif choice == "3":
             rentals_menu()
 
-        elif choice == 0:
+        elif choice == "0":
             print("Goodbye!")
             break
         else:
@@ -40,13 +40,13 @@ def books_menu():
         choice = input("Enter your choice: ")
         print()
 
-        if choice == 1:
+        if choice == "1":
             add_book()
-        elif choice == 2:
+        elif choice == "2":
             edit_book()
-        elif choice == 3:
+        elif choice == "3":
             show_all_books()
-        elif choice == 0:
+        elif choice == "0":
             break
         else:
             print("Invalid choice. Please try again.")
@@ -61,13 +61,13 @@ def members_menu():
         choice = input("Enter your choice: ")
         print()
 
-        if choice == 1:
+        if choice == "1":
             add_member()
-        elif choice == 2:
+        elif choice == "2":
             edit_member()
-        elif choice == 3:
-            pass
-        elif choice == 0:
+        elif choice == "3":
+            show_all_members()
+        elif choice == "0":
             break
         else:
             print("Invalid choice. Please try again.")
@@ -80,7 +80,7 @@ def rentals_menu():
         print("3. List rental")
         print("0. Back")
 
-        choice = input("Enter your choice: ")
+        choice = int(input("Enter your choice: "))
         print()
         if choice == 1:
             rent_book()
@@ -89,7 +89,7 @@ def rentals_menu():
         elif choice == 3:
             show_all_rentals()
         elif choice == 0:
-            pass
+            break
         else:
             print("Invalid choice. Please try again.")
 
