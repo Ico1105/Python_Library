@@ -65,7 +65,7 @@ def show_all_books():
 
 def delete_book():
     books = load_json("storage/books.json")
-    archive = load_json("storage/archived_books.jsoniu n")
+    archive = load_json("storage/archived_books.json")
     rentals = load_json("storage/rentals.json")
     for book in books:
         print(f"{book['isbn']}."

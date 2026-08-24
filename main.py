@@ -35,6 +35,8 @@ def books_menu():
         print("1. Add book")
         print("2. Edit book")
         print("3. List book")
+        print("4. Delete book")
+        print("5. Restore book")
         print("0. Back")
 
         choice = input("Enter your choice: ")
