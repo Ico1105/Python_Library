@@ -106,6 +106,16 @@ def restore_book():
             return
     print("Book not found in archive.")
 
+def list_archived_books():
+    archive = load_json("storage/archive_books.json")
+    print("ARCHIVED BOOKS:")
+    for book in archive:
+        print(f"ISBN -> {book['isbn']}\n"
+              f"Title: {book['title']}\n"
+              f"Author: {book['author']}")
+        print("=" * 20)
+        return
+    print("No archived books found.")
 
 
 if __name__ == "__main__":

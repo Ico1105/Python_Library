@@ -56,14 +56,6 @@
         "available_copies": 1
     },
     {
-        "isbn": "9781491912058",
-        "title": "Flask Web Development",
-        "author": "Miguel Grinberg",
-        "year": 2018,
-        "total_copies": 1,
-        "available_copies": 1
-    },
-    {
         "isbn": "9781617296959",
         "title": "Two Scoops of Django",
         "author": "Daniel Roy Greenfeld",

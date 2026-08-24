@@ -1,4 +1,4 @@
-from services.book_service import add_book, edit_book, show_all_books, delete_book, restore_book
+from services.book_service import add_book, edit_book, show_all_books, delete_book, restore_book, list_archived_books
 from services.member_service import add_member, edit_member, show_all_members, delete_member, restore_member
 from services.rental_service import rent_book, return_book, show_all_rentals
 
@@ -37,6 +37,7 @@ def books_menu():
         print("3. List book")
         print("4. Delete book")
         print("5. Restore book")
+        print("6. List archived books")
         print("0. Back")
 
         choice = input("Enter your choice: ")
@@ -52,6 +53,8 @@ def books_menu():
             delete_book()
         elif choice == "5":
             restore_book()
+        elif choice == "6":
+            list_archived_books()
         elif choice == "0":
             break
         else:
