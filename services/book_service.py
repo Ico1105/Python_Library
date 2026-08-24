@@ -64,7 +64,30 @@ def show_all_books():
         print("=" * 20)
 
 def delete_book():
-    pass
+    books = load_json("storage/books.json")
+    archive = load_json("storage/archived_books.jsoniu n")
+    rentals = load_json("storage/rentals.json")
+    for book in books:
+        print(f"{book['isbn']}."
+              f"{book['title']}"
+              f"{book['author']}")
+    book_isbn = input("Enter the book ISBN to delete: ")
+
+    for rental in rentals:
+        if rental['isbn'] == book_isbn and rental['return_date'] is None:
+            print("Book is currently rented. Please return the book first.")
+            print("Book cannot be deleted.")
+            return
+
+    for book in books:
+        if book["isbn"] == book_isbn:
+            archive.append(book)
+            books.remove(book)
+            save_json("storage/books.json", books)
+            save_json("storage/archive_books.json", archive)
+            print("Book deleted successfully.")
+            return
+
 
 
 if __name__ == "__main__":

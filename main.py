@@ -1,5 +1,5 @@
 from services.book_service import add_book, edit_book, show_all_books
-from services.member_service import add_member, edit_member, show_all_members
+from services.member_service import add_member, edit_member, show_all_members, delete_member
 from services.rental_service import rent_book, return_book, show_all_rentals
 
 
@@ -57,6 +57,7 @@ def members_menu():
         print("1. Add member")
         print("2. Edit member")
         print("3. List member")
+        print("4. Delete member")
         print("0. Back")
         choice = input("Enter your choice: ")
         print()
@@ -67,6 +68,8 @@ def members_menu():
             edit_member()
         elif choice == "3":
             show_all_members()
+        elif choice == "4":
+            delete_member()
         elif choice == "0":
             break
         else:

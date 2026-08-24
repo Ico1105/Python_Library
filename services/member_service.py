@@ -75,8 +75,35 @@ def show_all_members():
               f"Address: {member['address']}\n")
         print("=" * 20)
 
-def archive_member():
-    pass
+def delete_member():
+    members = load_json("storage/members.json")
+    rentals = load_json("storage/rentals.json")
+    archive = load_json("storage/archive.json")
+
+
+    for member in members:
+        print(f"{member['member_id']}."
+              f" {member['first_name']}"
+              f" {member['last_name']}")
+    member_id = int(input("Enter the member ID to delete: "))
+
+    # Check active rentals
+    for rental in rentals:
+        if rental['member_id'] == member_id and rental['return_date'] is None:
+            print("Member has an active rental. Cannot delete.")
+            return
+
+    for member in members:
+            if member["member_id"] == member_id:
+                members.remove(member)
+                archive.append(member)
+
+                save_json("storage/members.json", members)
+                save_json("storage/archive.json", archive)
+                print("Member deleted successfully.")
+                return
+
+    print("Member not found.")
 
 if __name__ == "__main__":
     show_all_members()
