@@ -88,6 +88,24 @@ def delete_book():
             print("Book deleted successfully.")
             return
 
+def restore_book():
+    archive = load_json("storage/archive_books.json")
+    books = load_json("storage/books.json")
+    for book in archive:
+        print(f"{book['isbn']}."
+              f"{book['title']}"
+              f"{book['author']}")
+    book_isbn = input("Enter the book ISBN to restore: ")
+    for book in archive:
+        if book["isbn"] == book_isbn:
+            books.append(book)
+            archive.remove(book)
+            save_json("storage/books.json", books)
+            save_json("storage/archive_books.json", archive)
+            print("Book restored successfully.")
+            return
+    print("Book not found in archive.")
+
 
 
 if __name__ == "__main__":

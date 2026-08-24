@@ -105,5 +105,26 @@ def delete_member():
 
     print("Member not found.")
 
+def restore_member():
+    archive = load_json("storage/archive.json")
+    members = load_json("storage/members.json")
+    for member in archive:
+        print(f"{member['member_id']}."
+              f" {member['first_name']}"
+              f" {member['last_name']}")
+    member_id = int(input("Enter the member ID to restore: "))
+
+    for member in archive:
+        if member["member_id"] == member_id:
+            members.append(member)
+            archive.remove(member)
+            save_json("storage/members.json", members)
+            save_json("storage/archive.json", archive)
+            print("Member restored successfully.")
+            return
+
+    print("Member not found in archive.")
+
+
 if __name__ == "__main__":
     show_all_members()
