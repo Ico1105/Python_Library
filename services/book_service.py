@@ -12,10 +12,29 @@ def add_book():
     books = load_json("storage/books.json")
 
     isbn = get_isbn()
+    if isbn is None:
+        print("Cancelled.")
+        return
+
     title = get_title()
+    if title is None:
+        print("Cancelled.")
+        return
+
     author = get_author()
+    if author is None:
+        print("Cancelled.")
+        return
+
     year = get_year()
+    if year is None:
+        print("Cancelled.")
+        return
+
     total_copies = get_total_copies()
+    if total_copies is None:
+        print("Cancelled.")
+        return
 
     book = Book(isbn=isbn,
                 title=title,
@@ -108,14 +127,17 @@ def restore_book():
 
 def list_archived_books():
     archive = load_json("storage/archive_books.json")
+    if not archive:
+        print("No archived books found.")
+        return
     print("ARCHIVED BOOKS:")
     for book in archive:
         print(f"ISBN -> {book['isbn']}\n"
               f"Title: {book['title']}\n"
               f"Author: {book['author']}")
         print("=" * 20)
-        return
-    print("No archived books found.")
+
+
 
 
 if __name__ == "__main__":

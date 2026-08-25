@@ -18,10 +18,25 @@ def add_member():
     members = load_json("storage/members.json")
 
     first_name = get_first_name()
+    if first_name is None:
+        print("Cancelled.")
+        return
     last_name = get_last_name()
+    if last_name is None:
+        print("Cancelled.")
+        return
     email = get_email()
+    if email is None:
+        print("Cancelled.")
+        return
     phone = get_phone()
+    if phone is None:
+        print("Cancelled.")
+        return
     address = get_address()
+    if address is None:
+        print("Cancelled.")
+        return
     member_id = generate_member_id(members)
 
     member = Member(
@@ -119,11 +134,24 @@ def restore_member():
             members.append(member)
             archive.remove(member)
             save_json("storage/members.json", members)
-            save_json("storage/archive.json", archive)
+            save_json("storage/archived_members.json", archive)
             print("Member restored successfully.")
             return
 
     print("Member not found in archive.")
+
+def list_archived_members():
+    archive = load_json("storage/archived_members.json")
+    if not archive:
+        print("No archived members found.")
+
+    for member in archive:
+        print(f"Member ID: {member['member_id']}. \n"
+              f"Name: {member['first_name']} {member['last_name']}\n"
+              f"Email: {member['email']}\n"
+              f"Phone: {member['phone']}\n"
+              f"Address: {member['address']}\n")
+        print("=" * 20)
 
 
 if __name__ == "__main__":
