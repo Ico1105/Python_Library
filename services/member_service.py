@@ -76,8 +76,6 @@ def edit_member():
             member[field] = new_value
             save_json("storage/members.json", members)
 
-
-
             print("===========================")
 
 def show_all_members():
